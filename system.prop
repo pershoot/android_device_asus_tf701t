@@ -1,0 +1,4 @@
+#
+# system.prop for TF701T
+#
+ro.opengles.version = 131072
