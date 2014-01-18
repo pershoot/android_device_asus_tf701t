@@ -1,0 +1,611 @@
+Copyright (c) 2011-2013 NVIDIA Corporation.  All Rights Reserved.
+#
+#NVIDIA Corporation and its licensors retain all intellectual property and
+#proprietary rights in and to this software and related documentation.  Any
+#use, reproduction, disclosure or distribution of this software and related
+#documentation without an express license agreement from NVIDIA Corporation
+#is strictly prohibited.
+
+#import init.asusreset.rc
+import init.${ro.boot.modem}_macallan.rc
+import init.factory.rc
+import init.macallan.usb.rc
+
+on early-init
+    mount debugfs debugfs /sys/kernel/debug
+
+    # create directory for ASUS Product Demo
+    mkdir /APD 0660 system system
+
+    # create directory for mounting usb drives
+    mkdir /Removable 0755 media_rw media_rw
+
+    # persist
+    mkdir /persist 0764 root system
+
+on init
+    mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /storage/emulated 0555 root root
+    mkdir /storage/sdcard1 0555 root root
+
+    export SECONDARY_STORAGE /storage/sdcard1
+    export EXTERNAL_STORAGE /storage/emulated/legacy
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
+    export TOUCH_CONF_DIR /persist/touch
+    export TOUCH_DATA_DIR /persist/touch
+
+    # Support legacy paths
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+
+on fs
+    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
+    setprop ro.crypto.umount_sd false
+    mount_all /fstab.macallan
+    mount tmpfs tmpfs /Removable mode=0755,gid=1000
+
+on post-fs-data
+    mkdir /data/sensors 0701 root root
+    mkdir /data/sensors/hw 0701  root root
+    start halsel
+
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/firmware 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    mkdir /data/nvcam 0700 media camera
+    chown dhcp dhcp /data/misc/dhcp
+
+    mkdir /data/misc/wminput 0776 system system
+
+    mkdir /data/media 0770 media_rw media_rw
+
+    # Set indication (checked by vold) that we have finished this action
+    setprop vold.post_fs_data_done 1
+
+    # Create GPS folders and set its permissions
+    mkdir /data/gps 775 system system
+    chown system system /data/gps
+    chmod 0777 /system/bin/gpsd
+
+on boot
+#Set GPIO 164 (power pin) for BCM GPS
+    chmod 0660 /dev/ttyHS1
+    chown gps gps /dev/ttyHS1
+    write /sys/class/gpio/export 164
+    write /sys/class/gpio/gpio164/direction out
+    write /sys/class/gpio/gpio164/value 0
+    chmod 0664 /sys/class/gpio/gpio164/value
+    chown gps gps /sys/class/gpio/gpio164/value
+
+# add a link for libgps.conf
+    symlink /system/etc/libgps.conf /data/gps/libgps.conf
+
+# bluetooth
+    # change back to bluetooth from system
+    chown bluetooth net_bt_stack /data/misc/bluetooth
+    # UART device
+    chmod 0660 /dev/ttyHS2
+    chown bluetooth net_bt_stack /dev/ttyHS2
+
+    # power up/down interface
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /sys/class/rfkill/rfkill0/type
+    write /sys/class/rfkill/rfkill0/state 0
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+
+    # bluetooth MAC address programming
+    chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown bluetooth net_bt_stack /system/etc/bluetooth
+    chown bluetooth net_bt_stack /data/misc/bluetooth
+    setprop ro.bt.bdaddr_path "/persist/bt_mac"
+
+# OEM
+    setprop persist.sys.NV_OEM_PROFILE_NAME "/system/etc/oem_profile"
+
+# wifi
+    start wifiloader
+
+# backlight
+    chown system system /sys/class/backlight/pwm-backlight/brightness
+
+# didim
+    chown system system /sys/class/graphics/fb0/device/smartdimmer/enable
+    chown system system /sys/class/graphics/fb0/device/smartdimmer/aggressiveness
+    chown system system /sys/class/graphics/fb0/device/smartdimmer/sd_window
+    chown system system /sys/class/graphics/fb0/device/smartdimmer/sd_window_enable
+
+# CMU
+    chown system system /sys/class/graphics/fb0/device/cmu_enable
+    chown system system /sys/class/graphics/fb1/device/cmu_enable
+
+# USB camera
+    chown media media sys/class/usb_camera/power
+
+# power
+    chown system system /sys/kernel/tegra_cap/core_cap_level
+    chown system system /sys/kernel/tegra_cap/core_cap_state
+    chown system system /sys/module/cpu_tegra/parameters/cpu_user_cap
+    chown system system /sys/module/cpu_tegra3/parameters/mp_overhead
+    chown system system /sys/module/cpu_tegra/parameters/system_mode
+    chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_1
+    chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_2
+    chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_3
+    chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_4
+
+# Sensor
+    chown system system /sys/bus/iio/devices/device0/als_ir_mode
+    chown system system /sys/bus/iio/devices/device0/als_enable
+    chown system system /sys/bus/iio/devices/device0/als_high_threshold
+    chown system system /sys/bus/iio/devices/device0/als_low_threshold
+
+    chown system system /sys/bus/iio/devices/device0/proximity_enable
+    chown system system /sys/bus/iio/devices/device0/proximity_high_threshold
+    chown system system /sys/bus/iio/devices/device0/proximity_low_threshold
+    chown system system /sys/class/compass/akm09911/enable_mag
+    chown system system /sys/class/compass/akm09911/delay_mag
+
+    #light sensor
+    chown system system /sys/bus/i2c/devices/2-001c/poll_time
+    chown system system /sys/bus/i2c/devices/2-001c/lightsensor_status
+    chmod 0664 /sys/bus/i2c/devices/2-001c/poll_time
+    chmod 0664 /sys/bus/i2c/devices/2-001c/lightsensor_status
+
+# iio
+    chown system system /dev/iio:device0
+    chown system system /sys/bus/iio/devices/trigger0/name
+    chown system system /sys/bus/iio/devices/iio:device0/accl_enable
+    chown system system /sys/bus/iio/devices/iio:device0/accl_matrix
+    chown system system /sys/bus/iio/devices/iio:device0/buffer/length
+    chown system system /sys/bus/iio/devices/iio:device0/buffer/enable
+    chown system system /sys/bus/iio/devices/iio:device0/compass_enable
+    chown system system /sys/bus/iio/devices/iio:device0/compass_matrix
+    chown system system /sys/bus/iio/devices/iio:device0/dmp_on
+    chown system system /sys/bus/iio/devices/iio:device0/dmp_int_on
+    chown system system /sys/bus/iio/devices/iio:device0/gyro_enable
+    chown system system /sys/bus/iio/devices/iio:device0/gyro_matrix
+    chown system system /sys/bus/iio/devices/iio:device0/in_accel_scale
+    chown system system /sys/bus/iio/devices/iio:device0/in_anglvel_scale
+    chown system system /sys/bus/iio/devices/iio:device0/in_magn_scale
+    chown system system /sys/bus/iio/devices/iio:device0/key
+    chown system system /sys/bus/iio/devices/iio:device0/power_state
+    chown system system /sys/bus/iio/devices/iio:device0/sampling_frequency
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_accel_x_en
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_accel_y_en
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_accel_z_en
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_anglvel_x_en
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_anglvel_y_en
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_anglvel_z_en
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_magn_x_en
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_magn_y_en
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_magn_z_en
+    chown system system /sys/bus/iio/devices/iio:device0/scan_elements/in_timestamp_en
+    chown system system /sys/bus/iio/devices/iio:device0/temperature
+    chown system system /sys/bus/iio/devices/iio:device0/trigger/current_trigger
+    chown system system /dev/iio:device1
+    chown system system /sys/bus/iio/devices/trigger1/name
+    chown system system /sys/bus/iio/devices/iio:device1/buffer/length
+    chown system system /sys/bus/iio/devices/iio:device1/buffer/enable
+    chown system system /sys/bus/iio/devices/iio:device1/compass_enable
+    chown system system /sys/bus/iio/devices/iio:device1/compass_matrix
+    chown system system /sys/bus/iio/devices/iio:device1/in_magn_scale
+    chown system system /sys/bus/iio/devices/iio:device1/power_state
+    chown system system /sys/bus/iio/devices/iio:device1/sampling_frequency
+    chown system system /sys/bus/iio/devices/iio:device1/scan_elements/in_magn_x_en
+    chown system system /sys/bus/iio/devices/iio:device1/scan_elements/in_magn_y_en
+    chown system system /sys/bus/iio/devices/iio:device1/scan_elements/in_magn_z_en
+    chown system system /sys/bus/iio/devices/iio:device1/scan_elements/in_timestamp_en
+    chown system system /sys/bus/iio/devices/iio:device1/trigger/current_trigger
+
+    chmod 600 /dev/iio:device0
+    chmod 600 /sys/bus/iio/devices/trigger0/name
+    chmod 600 /sys/bus/iio/devices/iio:device0/accl_enable
+    chmod 600 /sys/bus/iio/devices/iio:device0/accl_matrix
+    chmod 600 /sys/bus/iio/devices/iio:device0/buffer/length
+    chmod 600 /sys/bus/iio/devices/iio:device0/buffer/enable
+    chmod 600 /sys/bus/iio/devices/iio:device0/compass_enable
+    chmod 600 /sys/bus/iio/devices/iio:device0/compass_matrix
+    chmod 600 /sys/bus/iio/devices/iio:device0/dmp_on
+    chmod 600 /sys/bus/iio/devices/iio:device0/dmp_int_on
+    chmod 600 /sys/bus/iio/devices/iio:device0/gyro_enable
+    chmod 600 /sys/bus/iio/devices/iio:device0/gyro_matrix
+    chmod 600 /sys/bus/iio/devices/iio:device0/in_accel_scale
+    chmod 600 /sys/bus/iio/devices/iio:device0/in_anglvel_scale
+    chmod 600 /sys/bus/iio/devices/iio:device0/in_magn_scale
+    chmod 600 /sys/bus/iio/devices/iio:device0/key
+    chmod 600 /sys/bus/iio/devices/iio:device0/power_state
+    chmod 600 /sys/bus/iio/devices/iio:device0/sampling_frequency
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_accel_x_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_accel_y_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_accel_z_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_anglvel_x_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_anglvel_y_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_anglvel_z_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_magn_x_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_magn_y_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_magn_z_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/scan_elements/in_timestamp_en
+    chmod 600 /sys/bus/iio/devices/iio:device0/temperature
+    chmod 600 /sys/bus/iio/devices/iio:device0/trigger/current_trigger
+    chmod 600 /dev/iio:device1
+    chmod 600 /sys/bus/iio/devices/trigger1/name
+    chmod 600 /sys/bus/iio/devices/iio:device1/buffer/length
+    chmod 600 /sys/bus/iio/devices/iio:device1/buffer/enable
+    chmod 600 /sys/bus/iio/devices/iio:device1/compass_enable
+    chmod 600 /sys/bus/iio/devices/iio:device1/compass_matrix
+    chmod 600 /sys/bus/iio/devices/iio:device1/in_magn_scale
+    chmod 600 /sys/bus/iio/devices/iio:device1/power_state
+    chmod 600 /sys/bus/iio/devices/iio:device1/sampling_frequency
+    chmod 600 /sys/bus/iio/devices/iio:device1/scan_elements/in_magn_x_en
+    chmod 600 /sys/bus/iio/devices/iio:device1/scan_elements/in_magn_y_en
+    chmod 600 /sys/bus/iio/devices/iio:device1/scan_elements/in_magn_z_en
+    chmod 600 /sys/bus/iio/devices/iio:device1/scan_elements/in_timestamp_en
+    chmod 600 /sys/bus/iio/devices/iio:device1/trigger/current_trigger
+
+    chown root input /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/enable
+    chown root input /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/delay
+    chown root input /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/direct
+    chown root input /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/data
+    chown root input /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/calisel
+    chown root input /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/cali
+    chown root input /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/cali6
+
+    chmod 660 /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/enable
+    chmod 660 /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/delay
+    chmod 660 /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/direct
+    chmod 660 /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/calisel
+    chmod 660 /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/cali
+    chmod 660 /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/cali6
+    chmod 440 /sys/devices/platform/tegra11-i2c.0/i2c-0/0-000f/data
+
+# Power management settings
+    write /sys/devices/system/cpu/cpuquiet/tegra_cpuquiet/no_lp 0
+    #write /sys/module/tegra3_emc/parameters/emc_enable 0
+    #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1000000
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
+
+    write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 95
+    write /sys/devices/system/cpu/cpufreq/conservative/down_threshold 50
+    write /sys/devices/system/cpu/cpufreq/conservative/freq_step 3
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpufreq/interactive/boost_factor 2
+    write /sys/devices/system/cpu/cpufreq/interactive/sustain_load 80
+    write /sys/devices/system/cpu/cpuquiet/tegra_cpuquiet/enable 1
+    write /sys/devices/system/cpu/cpuquiet/current_governor runnable
+    write /sys/module/cpuidle_t11x/parameters/cpu_power_gating_in_idle 31
+    write /sys/module/cpuidle_t11x/parameters/slow_cluster_power_gating_noncpu 1
+    write /sys/module/cpuidle/parameters/power_down_in_idle 1
+
+    chown system system /sys/devices/system/cpu/cpuquiet/tegra_cpuquiet/no_lp
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/max_boost
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chown system system /sys/devices/tegradc.0/enable
+    chown system system /sys/devices/tegradc.1/enable
+    chown system system /sys/devices/platform/host1x/nvavp/boost_sclk
+    chown system system /sys/class/input/input0/enabled
+    chown system system /sys/class/input/input1/enabled
+    chown system system /sys/class/input/input2/enabled
+
+    chown system system /sys/kernel/tegra_cap/cbus_cap_level
+    chown system system /sys/kernel/tegra_cap/cbus_cap_state
+    chown system system /sys/devices/platform/host1x/gr3d/enable_3d_scaling
+    chown system system /sys/devices/platform/pwm-fan/pwm_cap
+
+    # TODO: Remove once powerhal takes over app profiles
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+# nvdps
+    chown system system /sys/class/graphics/fb0/device/nvdps
+
+# NTFS and exFAT support
+    insmod /sbin/tntfs.ko
+    insmod /sbin/texfat.ko
+
+# touch
+    chown system system /sys/devices/virtual/misc/raydium_ts/slowscan_enable
+    chown system system /sys/devices/virtual/misc/raydium_ts/self_test
+    chown system system /sys/bus/spi/devices/spi0.0/self_test
+
+# gaugeIC
+    chown system system /sys/class/i2c-dev/i2c-0/device/0-000b/pad_battery_by_EC_bq27520_FW_update_enable
+    chmod 0644 /sys/class/i2c-dev/i2c-0/device/0-000b/pad_battery_by_EC_bq27520_FW_update_enable
+
+#fuse
+   chmod 444 /sys/devices/platform/tegra-fuse/odm_production_mode
+
+# Default Read Ahead value for sdcards
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk1/queue/read_ahead_kb 2048
+
+# Wiimote connect status
+    write /data/misc/wminput/connected 0
+    chmod 0666 /data/misc/wminput/connected
+
+# EDP attributes
+    write /sys/power/edp/battery/backlight/notify 1
+    write /sys/power/edp/battery/imx091/notify 1
+    write /sys/power/edp/battery/speaker/notify 1
+
+# reset permissions to /ADF
+    chown system system /ADF
+    chmod 0755 /ADF
+
+#+++ MikeHsu: for factory reset with rm
+#service rmasusdir /system/bin/asusrmdir1.sh
+#    class main
+#    oneshot
+#--- MikeHsu: for factory reset with rm
+
+# set hwui properties depending on the screen resolution and the memory size
+service set_hwui_params /system/bin/set_hwui_params.sh
+    class main
+    user root
+    group root
+    oneshot
+
+# CPU Boost: boost CPU on input events
+service input-cfboost /system/bin/input_cfboost_init.sh
+    class main
+    user root
+    group root
+    oneshot
+
+#service asus-dbug-d /data/data/com.asus.debugger/files/asus-debugger-d
+#        class late_start
+#        disabled
+
+#on property:ril.asus_debugger_running=1
+#        start asus-dbug-d
+
+on property:ro.debuggable=1
+    # EMC debug interface
+    chmod 666 /sys/kernel/debug/tegra_emc/eack_state
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABKL
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_eth0 /system/bin/dhcpcd -ABKL -f/system/etc/dhcpcd/dhcpcd.conf
+     class main
+     disabled
+     oneshot
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service iprenew_eth0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+    class late_start
+
+# bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
+service bugreport /system/bin/dumpstate -d -p -B -o /data/data/com.android.shell/files/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+    keycodes 115 114
+
+on property:init.svc.hciattach=stopped
+    write /sys/devices/platform/reg-userspace-consumer.1/state disabled
+
+# Prepare TF service
+import init.tf.rc
+
+# Enable NvCpuD, and set it to never poll config again
+#on boot
+#    setprop nvcpud.enabled true
+#    setprop nvcpud.config_refresh_ms -1
+
+#service nvcpud /system/bin/nvcpud
+#    class main
+#    user system
+#    group system
+#    oneshot
+
+# Enable PowerService
+    service powerservice /system/bin/powerservice
+    class main
+    user system
+    group system
+
+# test mode for RIL: Should probably be removed from production phones
+service ril-daemon-test /system/bin/rild
+    socket rild-testmode stream 666 root radio
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_rw sdcard_r
+    disabled
+
+# Start Icera switcher daemon
+#service icera-switcher /system/bin/icera-switcherd
+#    class main
+#    user root
+#    group log
+
+# Icera firmware update
+#service icera-loader /system/bin/icera-loader /dev/ttyACM0 /data/modem_fw
+#    class main
+#    user radio
+#    group radio
+#    oneshot
+
+# Set up HDCP
+import init.hdcp.rc
+
+#Raydium touch setting
+service rm_ts_service    /system/bin/rm_ts_server
+    class main
+    user system
+    group system input
+
+# reset permissions to /persist
+on property:ro.factorytest=2
+    chown system system /persist
+    chmod 0755 /persist
+
+# create filesystems if necessary
+service setup_fs /system/bin/setup_fs \
+        /dev/block/platform/sdhci-tegra.3/by-name/PER \
+        /dev/block/platform/sdhci-tegra.3/by-name/UDA \
+        /dev/block/platform/sdhci-tegra.3/by-name/CAC \
+        /dev/block/platform/sdhci-tegra.3/by-name/ADF
+    class core
+    user root
+    group root
+    oneshot
+
+# unified scaling setup
+service ussr_setup /system/bin/ussr_setup.sh
+    class main
+    user root
+    group root
+    oneshot
+
+# unified scaling process
+#service ussrd /system/bin/ussrd
+#    user system
+#    group system
+#    class main
+
+# unified scaling watchdog process
+service usdwatchdog /system/bin/usdwatchdog --wait 30
+    user system
+    group system
+    class main
+
+# start pbc daemon
+#service pbc /system/bin/pbc
+#    class main
+#    user root
+#    group root
+
+# Second boot and onwards
+on property:ril.testmode=1
+    stop ril-daemon
+    start ril-daemon-test
+
+on property:ril.testmode=0
+    stop ril-daemon-test
+    start ril-daemon
+
+# Stop ril daemon unconditionally for now
+on property:init.svc.ril-daemon=running
+    stop ril-daemon
+
+# Load wifi related driver & copy nvram
+service wifiloader /system/bin/loadDriver.sh
+    class main
+    user root
+    group system wifi
+    disabled
+    oneshot
+
+service p2p_supplicant /system/bin/wpa_supplicant \
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+    -I/system/etc/wifi/wpa_supplicant_overlay.conf -N \
+    -ip2p0 -Dnl80211  -c/data/misc/wifi/p2p_supplicant.conf \
+    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
+    -puse_p2p_group_interface=1 -e/data/misc/wifi/entropy.bin \
+    -g@android:wpa_wlan0
+#   we will start as root and wpa_supplicant will switch to user wifi
+#   after setting up the capabilities required for WEXT
+#   user wifi
+#   group wifi inet keystore
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+#service agnss_connect /system/bin/agnss_connect -p
+#    class main
+#    disabled
+#    oneshot
+#    user system
+#    group system
+
+# Customers should remove this line
+#import init.qvs.rc
+
+# launch BCM GPS Daemon
+service gpsd /system/bin/gpsd -c /etc/gpsconfig.xml
+    class main
+    user gps
+    group system inet sdcard_rw
+
+# Sensor: Add a akmd daemon
+on property:ro.boot.productid=mozart
+    start akmd
+
+service akmd /system/bin/akmd09911
+    class core
+    disabled
+    user system
+    group system misc input
+# Add a akmd daemon end
+
+# Sensor: support multiple HAL
+service halsel /system/bin/halsel
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+# ASUS Product Demo
+on property:persist.sys.enableAPD=1
+    start mount_apd
+
+service mount_apd /system/bin/mount_apd.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+# widevine install init
+on property:sys.boot_completed=1
+    start widevine_install
+
+service widevine_install /system/bin/widevine_install
+    user root
+    group root
+    disabled
+    oneshot

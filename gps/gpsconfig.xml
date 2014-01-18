@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<glgps xmlns="http://www.glpals.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.glpals.com/ glconfig.xsd" >
+  <!--HAL Confguration  -->
+  <hal 
+       PortName="/dev/ttyHS1"
+       BaudRate="921600"
+       
+       GpioNStdbyPath="/sys/class/gpio/gpio164/value"
+       GpioDelayMs="130"
+           
+       NvStorageDir="/data/gps/"       
+       LogDirectory="/data/gps/log/"
+       LogEnabled="false"
+       Log="FILE"
+       GpslogdPipePath="/data/gps/.gpslogd.pipe"
+       
+       HttpSyncLto="true"
+       LtoFileName="lto2.dat"
+       LtoDir="/data/gps/"
+       LtoSyncThresholdDays="1"
+
+       SuplEnable="false"       
+       NmeaOutName="/data/gps/nmea_out"
+       CtrlPipe="/data/gps/glgpsctrl"
+
+       HulaEnable="true"
+       HulaSensorMask="0x09"
+       HulaLog="true"
+       HulaDebugLog="true"
+       HulaTimePeriodGyroMs="20"
+       HulaTimePeriodAcclMs="20"
+       HulaMoEnable="true"
+       HulaTurnEnable="false"
+       HulaHeadingEnable="false"
+       HulaRawAcclGyroEnable="true"
+       HulaAltEnable="false"
+       HulaPowerSave="false"
+       HulaBaroEnable="false"
+  />
+
+  <gll 
+       LogPriMask="LOG_INFO"
+       LogFacMask="LOG_DEFAULT | LOG_GLLIO"
+       FrqPlan="FRQ_PLAN_26MHZ_2PPM"
+       RfType="GL_RF_4752_BRCM_EXT_LNA"
+  />
+  
+<job Id="Periodic">
+    <task>
+        <req_pos/>
+    </task>
+</job>
+
+</glgps>

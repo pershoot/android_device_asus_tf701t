@@ -20,8 +20,17 @@
 # to only building on ARM if they include assembly. Individual makefiles
 # are responsible for having their own logic, for fine-grained control.
 
+ifneq ($(filter tf701t,$(TARGET_DEVICE)),)
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+# link hardware to project for sensors
+$(shell mkdir -p $(TARGET_OUT_SHARED_LIBRARIES)/hw; \
+        cd $(TARGET_OUT_SHARED_LIBRARIES)/hw; \
+        ln -sf sensors.mozart.so sensors.macallan.so)
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
+endif
