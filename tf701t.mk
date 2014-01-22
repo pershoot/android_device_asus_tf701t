@@ -24,8 +24,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 # Root
 PRODUCT_COPY_FILES += \
     device/asus/tf701t/fstab.macallan:root/fstab.macallan \
-    device/asus/tf701t/ueventd.macallan.rc:root/ueventd.macallan.rc \
-    device/asus/tf701t/vold.fstab:system/etc/vold.fstab
+    device/asus/tf701t/ueventd.macallan.rc:root/ueventd.macallan.rc
 
 # Init
 PRODUCT_COPY_FILES += \

@@ -17,16 +17,22 @@ on early-init
     # create directory for ASUS Product Demo
     mkdir /APD 0660 system system
 
-    # create directory for mounting usb drives
-    mkdir /Removable 0755 media_rw media_rw
-
     # persist
     mkdir /persist 0764 root system
 
 on init
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
-    mkdir /storage/sdcard1 0555 root root
+
+    # External media
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /mnt/media_rw/sdcard2 0700 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk1 0700 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk2 0700 media_rw media_rw
+    mkdir /storage/sdcard1 0700 root root
+    mkdir /storage/sdcard2 0700 root root
+    mkdir /storage/usbdisk1 0700 root root
+    mkdir /storage/usbdisk2 0700 root root
 
     export SECONDARY_STORAGE /storage/sdcard1
     export EXTERNAL_STORAGE /storage/emulated/legacy
@@ -45,7 +51,6 @@ on fs
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
     setprop ro.crypto.umount_sd false
     mount_all /fstab.macallan
-    mount tmpfs tmpfs /Removable mode=0755,gid=1000
 
 on post-fs-data
     mkdir /data/sensors 0701 root root
@@ -414,8 +419,24 @@ service iprenew_eth0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
+service fuse_sdcard2 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard2 /storage/sdcard2
+    class late_start
+    disabled
+
+service fuse_usbdisk1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk1 /storage/usbdisk1
+    class late_start
+    disabled
+
+service fuse_usbdisk2 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk2 /storage/usbdisk2
+    class late_start
+    disabled
 
 # bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
 service bugreport /system/bin/dumpstate -d -p -B -o /data/data/com.android.shell/files/bugreports/bugreport
