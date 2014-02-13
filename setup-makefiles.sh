@@ -28,8 +28,8 @@ PRODUCT_COPY_FILES := \\
 EOF
 
 LINEEND=" \\"
-COUNT=`cat proprietary-files.txt | grep -v /python2.6/ | wc -l`
-for FILE in `cat proprietary-files.txt | grep -v /python2.6/`; do
+COUNT=`cat proprietary-files.txt | wc -l`
+for FILE in `cat proprietary-files.txt`; do
     COUNT=`expr $COUNT - 1`
     if [ $COUNT = "0" ]; then
         LINEEND=""

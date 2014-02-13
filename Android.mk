@@ -26,13 +26,10 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-# link hardware to project for sensors and unpack python libs
-PYTHON_PREBUILT_LIBS = $(ANDROID_BUILD_TOP)/vendor/asus/tf701t/proprietary/lib/python2.6.tar.gz
+# link hardware to project for sensors
 $(shell mkdir -p $(TARGET_OUT_SHARED_LIBRARIES)/hw; \
         cd $(TARGET_OUT_SHARED_LIBRARIES)/hw; \
-        ln -sf sensors.mozart.so sensors.macallan.so; \
-        cd ../; \
-        if [ -f $(PYTHON_PREBUILT_LIBS) ]; then tar zxf $(PYTHON_PREBUILT_LIBS); fi)
+        ln -sf sensors.mozart.so sensors.macallan.so)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
