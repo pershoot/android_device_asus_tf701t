@@ -118,7 +118,8 @@ BOARD_SEPOLICY_UNION := \
     sensors_config.te \
     surfaceflinger.te \
     system.te \
-    zygote.te
+    zygote.te \
+    healthd.te
 
 BOARD_HARDWARE_CLASS := device/asus/tf701t/cmhw/
 
