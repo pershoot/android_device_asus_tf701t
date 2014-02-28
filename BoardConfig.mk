@@ -117,10 +117,10 @@ BOARD_SEPOLICY_UNION := \
     init_shell.te \
     file.te \
     sensors_config.te \
-    surfaceflinger.te \
     system.te \
     zygote.te \
-    healthd.te
+    healthd.te \
+    domain.te
 
 BOARD_HARDWARE_CLASS := device/asus/tf701t/cmhw/
 
