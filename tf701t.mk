@@ -51,8 +51,7 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/audio/audio_effects.conf:system/etc/audio_effects.conf \
     device/asus/tf701t/audio/audio_policy.conf:system/etc/audio_policy.conf \
     device/asus/tf701t/audio/nvaudio_conf_haydn.xml:system/etc/nvaudio_conf_haydn.xml \
-    device/asus/tf701t/audio/nvaudio_conf_mozart.xml:system/etc/nvaudio_conf_mozart.xml \
-    device/asus/tf701t/audio/nvaudio_conf.xml:system/etc/nvaudio_conf.xml
+    device/asus/tf701t/audio/nvaudio_conf_mozart.xml:system/etc/nvaudio_conf_mozart.xml
 
 # Wifi
 PRODUCT_COPY_FILES += \

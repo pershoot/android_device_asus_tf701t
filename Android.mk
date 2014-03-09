@@ -31,6 +31,11 @@ $(shell mkdir -p $(TARGET_OUT_SHARED_LIBRARIES)/hw; \
         cd $(TARGET_OUT_SHARED_LIBRARIES)/hw; \
         ln -sf sensors.mozart.so sensors.macallan.so)
 
+# link to project for nvaudio_conf
+$(shell mkdir -p $(TARGET_OUT_ETC); \
+        cd $(TARGET_OUT_ETC); \
+        ln -sf nvaudio_conf_mozart.xml nvaudio_conf.xml)
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
 endif
