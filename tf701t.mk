@@ -159,7 +159,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     ro.carrier=wifi-only \
     ro.sf.lcd_density=320 \
-    persist.tegra.compositor=glcomposer \
     debug.hwui.render_dirty_regions=false \
     persist.tegra.nvmmlite = 1 \
     drm.service.enabled=true \
