@@ -30,7 +30,6 @@
 
 /system/bin/gpsd               -- u:object_r:gpsd_exec:s0
 
-/sys/devices/system/cpu(/.*)?                     u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/platform/host1x/tegradc\.0(/.*)?                u:object_r:sysfs_devices_tegradc:s0
 /sys/devices/platform/host1x/tegradc\.1(/.*)?                u:object_r:sysfs_devices_tegradc:s0
 
