@@ -119,7 +119,8 @@ BOARD_SEPOLICY_UNION := \
     system.te \
     zygote.te \
     healthd.te \
-    domain.te
+    domain.te \
+    ueventd.te
 
 BOARD_HARDWARE_CLASS := device/asus/tf701t/cmhw/
 
