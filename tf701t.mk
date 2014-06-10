@@ -92,7 +92,8 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/idc/raydium_ts.idc:system/usr/idc/raydium_ts.idc \
     device/asus/tf701t/idc/sensor00fn11.idc:system/usr/idc/sensor00fn11.idc \
     device/asus/tf701t/idc/Vendor_0457_Product_0817.idc:system/usr/idc/Vendor_0457_Product_0817.idc \
-    device/asus/tf701t/idc/Vendor_0b05_Product_17fc.idc:system/usr/idc/Vendor_0b05_Product_17fc.idc
+    device/asus/tf701t/idc/Vendor_0b05_Product_17fc.idc:system/usr/idc/Vendor_0b05_Product_17fc.idc \
+    device/asus/tf701t/idc/elantech_touchscreen.idc:system/usr/idc/elantech_touchscreen.idc
 
 # Keylayout
 PRODUCT_COPY_FILES += \
