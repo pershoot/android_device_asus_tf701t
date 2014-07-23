@@ -591,10 +591,9 @@
       minBitRate="4750" maxBitRate="12200"
       minSampleRate="8000" maxSampleRate="8000"
       minChannels="1" maxChannels="1" />
-  <!-- Wesley_Lee@asus.com: Acording to Software Spec, we don't support wmv and wma decoding. -->
-  <!--<VideoDecoderCap name="wmv" enabled="true"/>-->
-  <!--<AudioDecoderCap name="wma" enabled="true"/>-->
-  <!-- Wesley_Lee@asus.com -->
+
+  <VideoDecoderCap name="wmv" enabled="true"/>
+  <AudioDecoderCap name="wma" enabled="true"/>
   <VideoEditorCap maxInputFrameWidth="1920"
     maxInputFrameHeight="1080"
     maxOutputFrameWidth="1920"

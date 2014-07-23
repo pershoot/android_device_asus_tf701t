@@ -39,8 +39,8 @@
   />
 
   <gll 
-       LogPriMask="LOG_INFO"
-       LogFacMask="LOG_DEFAULT | LOG_GLLIO"
+       LogPriMask="LOG_DEBUG"
+       LogFacMask="LOG_GLLAPI | LOG_NMEA | LOG_RAWDATA | LOG_GLLIO | LOG_DEVCV | LOG_SENS"
        FrqPlan="FRQ_PLAN_26MHZ_2PPM"
        RfType="GL_RF_4752_BRCM_EXT_LNA"
   />

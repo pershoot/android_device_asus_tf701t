@@ -65,13 +65,13 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/wifi/firmware/bcm43341/fw_bcmdhd_apsta.bin:system/vendor/firmware/bcm43341/fw_bcmdhd_apsta.bin \
     device/asus/tf701t/wifi/firmware/bcm43341/fw_bcmdhd.bin:system/vendor/firmware/bcm43341/fw_bcmdhd.bin \
     device/asus/tf701t/wifi/firmware/bcm43341/fw_bcmdhd_p2p.bin:system/vendor/firmware/bcm43341/fw_bcmdhd_p2p.bin \
+    device/asus/tf701t/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     device/asus/tf701t/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/asus/tf701t/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Power
 PRODUCT_COPY_FILES += \
-    device/asus/tf701t/power.macallan.rc:system/etc/power.macallan.rc \
-    device/asus/tf701t/nvcpud.conf:system/etc/nvcpud.conf
+    device/asus/tf701t/power.macallan.rc:system/etc/power.macallan.rc
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -85,26 +85,37 @@ PRODUCT_COPY_FILES += \
 # IDC
 PRODUCT_COPY_FILES += \
     device/asus/tf701t/idc/asuspec.idc:system/usr/idc/asuspec.idc \
+    device/asus/tf701t/idc/ASUS_TransKeyboard.idc:system/usr/idc/ASUS_TransKeyboard.idc \
     device/asus/tf701t/idc/raydium_ts.idc:system/usr/idc/raydium_ts.idc \
     device/asus/tf701t/idc/sensor00fn11.idc:system/usr/idc/sensor00fn11.idc \
-    device/asus/tf701t/idc/Vendor_0457_Product_0817.idc:system/usr/idc/Vendor_0457_Product_0817.idc
+    device/asus/tf701t/idc/Vendor_0457_Product_0817.idc:system/usr/idc/Vendor_0457_Product_0817.idc \
+    device/asus/tf701t/idc/Vendor_0b05_Product_17fc.idc:system/usr/idc/Vendor_0b05_Product_17fc.idc
 
 # Keylayout
 PRODUCT_COPY_FILES += \
     device/asus/tf701t/keylayout/asuspec.kl:system/usr/keylayout/asuspec.kl \
+    device/asus/tf701t/keylayout/ASUS_TransKeyboard.kl:system/usr/keylayout/ASUS_TransKeyboard.kl \
+    device/asus/tf701t/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/asus/tf701t/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
     device/asus/tf701t/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     device/asus/tf701t/keylayout/tegra-kbc.kl:system/usr/keylayout/tegra-kbc.kl \
     device/asus/tf701t/keylayout/Vendor_0079_Product_0011.kl:system/usr/keylayout/Vendor_0079_Product_0011.kl \
+    device/asus/tf701t/keylayout/Vendor_044f_Product_d007.kl:system/usr/keylayout/Vendor_044f_Product_d007.kl \
     device/asus/tf701t/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
+    device/asus/tf701t/keylayout/Vendor_045e_Product_0719.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl \
     device/asus/tf701t/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
     device/asus/tf701t/keylayout/Vendor_046d_Product_c219.kl:system/usr/keylayout/Vendor_046d_Product_c219.kl \
+    device/asus/tf701t/keylayout/Vendor_046d_Product_c21d.kl:system/usr/keylayout/Vendor_046d_Product_c21d.kl \
+    device/asus/tf701t/keylayout/Vendor_046d_Product_c21e.kl:system/usr/keylayout/Vendor_046d_Product_c21e.kl \
     device/asus/tf701t/keylayout/Vendor_046d_Product_c21f.kl:system/usr/keylayout/Vendor_046d_Product_c21f.kl \
     device/asus/tf701t/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
     device/asus/tf701t/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
     device/asus/tf701t/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
     device/asus/tf701t/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
+    device/asus/tf701t/keylayout/Vendor_054c_Product_05c4.kl:system/usr/keylayout/Vendor_054c_Product_05c4.kl \
     device/asus/tf701t/keylayout/Vendor_0583_Product_2060.kl:system/usr/keylayout/Vendor_0583_Product_2060.kl \
     device/asus/tf701t/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
+    device/asus/tf701t/keylayout/Vendor_0b05_Product_17fc.kl:system/usr/keylayout/Vendor_0b05_Product_17fc.kl \
     device/asus/tf701t/keylayout/Vendor_1038_Product_1412.kl:system/usr/keylayout/Vendor_1038_Product_1412.kl \
     device/asus/tf701t/keylayout/Vendor_12bd_Product_d015.kl:system/usr/keylayout/Vendor_12bd_Product_d015.kl \
     device/asus/tf701t/keylayout/Vendor_1689_Product_fd00.kl:system/usr/keylayout/Vendor_1689_Product_fd00.kl \
@@ -123,6 +134,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
@@ -143,11 +155,11 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/permissions/com.nvidia.nvsi.xml:system/etc/permissions/com.nvidia.nvsi.xml \
     device/asus/tf701t/permissions/asus.hardware.battery.dock.xml:system/etc/permissions/asus.hardware.battery.dock.xml \
     device/asus/tf701t/permissions/asus.hardware.display.high_brightness.xml:system/etc/permissions/asus.hardware.display.high_brightness.xml \
+    device/asus/tf701t/permissions/asus.hardware.display.splendid.reading_mode.xml:system/etc/permissions/asus.hardware.display.splendid.reading_mode.xml \
+    device/asus/tf701t/permissions/asus.hardware.display.splendid.xml:system/etc/permissions/asus.hardware.display.splendid.xml \
     device/asus/tf701t/permissions/asus.hardware.dock.xml:system/etc/permissions/asus.hardware.dock.xml \
     device/asus/tf701t/permissions/asus.hardware.fw.dock_ec.xml:system/etc/permissions/asus.hardware.fw.dock_ec.xml \
-    device/asus/tf701t/permissions/asus.hardware.fw.dock_gaugel_ic.xml:system/etc/permissions/asus.hardware.fw.dock_gaugel_ic.xml \
     device/asus/tf701t/permissions/asus.hardware.fw.pad_ec.xml:system/etc/permissions/asus.hardware.fw.pad_ec.xml \
-    device/asus/tf701t/permissions/asus.hardware.fw.pad_gaugel_ic.xml:system/etc/permissions/asus.hardware.fw.pad_gaugel_ic.xml \
     device/asus/tf701t/permissions/asus.hardware.hall_sensor.xml:system/etc/permissions/asus.hardware.hall_sensor.xml \
     device/asus/tf701t/permissions/asus.hardware.keyboard.xml:system/etc/permissions/asus.hardware.keyboard.xml \
     device/asus/tf701t/permissions/asus.hardware.sound.maxxaudio.xml:system/etc/permissions/asus.hardware.sound.maxxaudio.xml
@@ -157,8 +169,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
+    ap.interface=wlan1 \
     ro.carrier=wifi-only \
     ro.sf.lcd_density=320 \
+    persist.tegra.compositor=glcomposer \
     debug.hwui.render_dirty_regions=false \
     persist.tegra.nvmmlite = 1 \
     drm.service.enabled=true \

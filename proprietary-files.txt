@@ -2,13 +2,16 @@ bin/akmd09911
 bin/cluster_get.sh
 bin/cluster_set.sh
 bin/dock_fw_update
-bin/dock_gic_fw_update
 bin/GammaSetting
 bin/gpsd
 bin/gpslogd
 bin/halsel
 bin/halsel.sh
 bin/HSVSetting
+bin/icera-crashlogs
+bin/icera-loader
+bin/icera_log_serial_arm
+bin/icera-switcherd
 bin/input_cfboost_init.sh
 bin/inv_self_test
 bin/loadDriver.sh
@@ -19,10 +22,8 @@ bin/nvcap_test
 bin/nvcgcserver
 bin/nvtest
 bin/pad_fw_update
-bin/pad_gic_fw_update
 bin/powerservice
 bin/raydium_selftest
-bin/rild
 bin/rm_ts_server
 bin/scalar_fw_update
 bin/set_hwui_params.sh
@@ -157,6 +158,7 @@ lib/libnvwsi.so
 lib/libopencv24_tegra.so
 lib/libpowerservice_client.so
 lib/libpowerservice.so
+lib/libril-icera.so
 lib/librm31080.so
 lib/librm_ts_service.so
 lib/libsecure_hdcp_up.so
@@ -181,6 +183,7 @@ lib/hw/camera.tegra.so
 lib/hw/gps.tegra.so
 lib/hw/gralloc.tegra.so
 lib/hw/hwcomposer.tegra.so
+lib/hw/keystore.tegra.so
 lib/hw/lights.macallan.so
 lib/hw/nfc.tegra.so
 lib/hw/sensors.haydn.so

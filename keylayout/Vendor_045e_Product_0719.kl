@@ -12,23 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# XBox 360 USB Controller
+# XBox 360 USB Wireless Controller
+# Reports itself as "Xbox 360 Wireless Receiver" and
+# "Microsoft Corp. Xbox 360 Wireless Adapter"
+# Similar in behavior to XBox 360 USB Controller except for the d-pad,
+# which is digital (scan codes instead of axes) on the wireless version.
 
-key 304   BUTTON_A
-key 305   BUTTON_B
-key 307   BUTTON_X
-key 308   BUTTON_Y
+key 0x130    BUTTON_A
+key 0x131    BUTTON_B
+key 0x133    BUTTON_X
+key 0x134    BUTTON_Y
 # Button "LB" maps to BUTTON_L1.
-key 310   BUTTON_L1
+key 0x136    BUTTON_L1
 # Button "RB" maps to BUTTON_R1.
-key 311   BUTTON_R1
-key 314   BACK
-key 315   BUTTON_START
+key 0x137    BUTTON_R1
+key 0x13a    BACK
+key 0x13b    BUTTON_START
 # Button with Xbox logo maps to HOME.
-key 316   HOME
+key 0x13c    HOME
 # These two keycodes are for click (press from above) on analog control sticks.
-key 317   BUTTON_THUMBL
-key 318   BUTTON_THUMBR
+key 0x13d    BUTTON_THUMBL
+key 0x13e    BUTTON_THUMBR
 
 # Left (0x00, 0x01) and right (0x03, 0x04) analog control stick.
 # The reported value for flat is 128 out of a range from -32767 to 32768, which is absurd.
@@ -46,6 +50,8 @@ axis 0x02 LTRIGGER
 axis 0x05 RTRIGGER
 
 # Hat.
-# (D-pad is reported as analog. Each axis has range from -1 to 1.)
-axis 0x10 HAT_X
-axis 0x11 HAT_Y
+# (D-pad is reported as digital. Each direction has a scan code.)
+key 0x2c0 DPAD_LEFT
+key 0x2c1 DPAD_RIGHT
+key 0x2c2 DPAD_UP
+key 0x2c3 DPAD_DOWN

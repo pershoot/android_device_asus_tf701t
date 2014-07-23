@@ -100,7 +100,6 @@
           <ctl name="Stereo ADC MIXL ADC2 Switch" val="1"/>
           <ctl name="Stereo ADC MIXR ADC2 Switch" val="1"/>
           <ctl name="Mic Jack Switch" val="0"/>
-          <ctl name="ADC Capture Switch" val="1"/>
           <ctl name="IN2 Mode Control" val="Differential"/>
           <ctl name="Int Mic Switch" val="1"/>
           <ctl name="DMIC Switch" val="DMIC1"/>
@@ -116,7 +115,6 @@
           <ctl name="DMIC Switch" val="Disable"/>
           <ctl name="ADC Capture Volume" val="70"/>
           <ctl name="Int Mic Switch" val="0"/>
-          <ctl name="ADC Capture Switch" val="1"/>
           <ctl name="Stereo ADC MIXL ADC1 Switch" val="1"/>
           <ctl name="Stereo ADC MIXR ADC1 Switch" val="1"/>
           <ctl name="Stereo ADC MIXL ADC2 Switch" val="0"/>

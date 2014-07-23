@@ -5,4 +5,3 @@ key 116   POWER             WAKE
 key 217   SEARCH            WAKE_DROPPED
 key 115   VOLUME_UP         WAKE_DROPPED
 key 114   VOLUME_DOWN       WAKE_DROPPED
-key 373   MODE_SWITCH       WAKE UNLOCK
