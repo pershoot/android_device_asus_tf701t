@@ -36,6 +36,24 @@ $(shell mkdir -p $(TARGET_OUT_ETC); \
         cd $(TARGET_OUT_ETC); \
         ln -sf nvaudio_conf_mozart.xml nvaudio_conf.xml)
 
+# copy audio_effects override
+$(shell mkdir -p $(TARGET_OUT_ETC); \
+        cp -pf device/asus/tf701t/audio/audio_effects.conf $(TARGET_OUT_ETC))
+
+# copy keylayout overrides
+$(shell mkdir -p $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/AVRCP.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Generic.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Vendor_0079_Product_0011.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Vendor_045e_Product_028e.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Vendor_046d_Product_c216.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Vendor_046d_Product_c219.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Vendor_046d_Product_c21f.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Vendor_054c_Product_0268.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Vendor_1038_Product_1412.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Vendor_12bd_Product_d015.kl $(TARGET_OUT_KEYLAYOUT); \
+        cp -pf device/asus/tf701t/keylayout/Vendor_2378_Product_100a.kl $(TARGET_OUT_KEYLAYOUT))
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
 endif

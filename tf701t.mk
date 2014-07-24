@@ -48,10 +48,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/asus/tf701t/audio/asound.conf:system/etc/asound.conf \
     device/asus/tf701t/audio/audioConfig_qvoice_icera_pc400.xml:system/etc/audioConfig_qvoice_icera_pc400.xml \
-    device/asus/tf701t/audio/audio_effects.conf:system/etc/audio_effects.conf \
     device/asus/tf701t/audio/audio_policy.conf:system/etc/audio_policy.conf \
     device/asus/tf701t/audio/nvaudio_conf_haydn.xml:system/etc/nvaudio_conf_haydn.xml \
     device/asus/tf701t/audio/nvaudio_conf_mozart.xml:system/etc/nvaudio_conf_mozart.xml
+
+# Audio override
+PRODUCT_COPY_FILES_OVERRIDES := \
+    system/etc/audio_effects.conf
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -95,25 +98,28 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/asus/tf701t/keylayout/asuspec.kl:system/usr/keylayout/asuspec.kl \
     device/asus/tf701t/keylayout/ASUS_TransKeyboard.kl:system/usr/keylayout/ASUS_TransKeyboard.kl \
-    device/asus/tf701t/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/asus/tf701t/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
     device/asus/tf701t/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     device/asus/tf701t/keylayout/tegra-kbc.kl:system/usr/keylayout/tegra-kbc.kl \
-    device/asus/tf701t/keylayout/Vendor_0079_Product_0011.kl:system/usr/keylayout/Vendor_0079_Product_0011.kl \
     device/asus/tf701t/keylayout/Vendor_044f_Product_d007.kl:system/usr/keylayout/Vendor_044f_Product_d007.kl \
-    device/asus/tf701t/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
     device/asus/tf701t/keylayout/Vendor_045e_Product_0719.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl \
-    device/asus/tf701t/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
-    device/asus/tf701t/keylayout/Vendor_046d_Product_c219.kl:system/usr/keylayout/Vendor_046d_Product_c219.kl \
     device/asus/tf701t/keylayout/Vendor_046d_Product_c21d.kl:system/usr/keylayout/Vendor_046d_Product_c21d.kl \
     device/asus/tf701t/keylayout/Vendor_046d_Product_c21e.kl:system/usr/keylayout/Vendor_046d_Product_c21e.kl \
-    device/asus/tf701t/keylayout/Vendor_046d_Product_c21f.kl:system/usr/keylayout/Vendor_046d_Product_c21f.kl \
-    device/asus/tf701t/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
     device/asus/tf701t/keylayout/Vendor_054c_Product_05c4.kl:system/usr/keylayout/Vendor_054c_Product_05c4.kl \
-    device/asus/tf701t/keylayout/Vendor_0b05_Product_17fc.kl:system/usr/keylayout/Vendor_0b05_Product_17fc.kl \
-    device/asus/tf701t/keylayout/Vendor_1038_Product_1412.kl:system/usr/keylayout/Vendor_1038_Product_1412.kl \
-    device/asus/tf701t/keylayout/Vendor_12bd_Product_d015.kl:system/usr/keylayout/Vendor_12bd_Product_d015.kl \
-    device/asus/tf701t/keylayout/Vendor_2378_Product_100a.kl:system/usr/keylayout/Vendor_2378_Product_100a.kl
+    device/asus/tf701t/keylayout/Vendor_0b05_Product_17fc.kl:system/usr/keylayout/Vendor_0b05_Product_17fc.kl
+
+# Keylayout overrides
+PRODUCT_COPY_FILES_OVERRIDES += \
+    system/usr/keylayout/AVRCP.kl \
+    system/usr/keylayout/Generic.kl \
+    system/usr/keylayout/Vendor_0079_Product_0011.kl \
+    system/usr/keylayout/Vendor_045e_Product_028e.kl \
+    system/usr/keylayout/Vendor_046d_Product_c216.kl \
+    system/usr/keylayout/Vendor_046d_Product_c219.kl \
+    system/usr/keylayout/Vendor_046d_Product_c21f.kl \
+    system/usr/keylayout/Vendor_054c_Product_0268.kl \
+    system/usr/keylayout/Vendor_1038_Product_1412.kl \
+    system/usr/keylayout/Vendor_12bd_Product_d015.kl \
+    system/usr/keylayout/Vendor_2378_Product_100a.kl
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
