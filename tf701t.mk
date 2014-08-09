@@ -154,7 +154,8 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/permissions/asus.hardware.fw.pad_ec.xml:system/etc/permissions/asus.hardware.fw.pad_ec.xml \
     device/asus/tf701t/permissions/asus.hardware.hall_sensor.xml:system/etc/permissions/asus.hardware.hall_sensor.xml \
     device/asus/tf701t/permissions/asus.hardware.keyboard.xml:system/etc/permissions/asus.hardware.keyboard.xml \
-    device/asus/tf701t/permissions/asus.hardware.sound.maxxaudio.xml:system/etc/permissions/asus.hardware.sound.maxxaudio.xml
+    device/asus/tf701t/permissions/asus.hardware.sound.maxxaudio.xml:system/etc/permissions/asus.hardware.sound.maxxaudio.xml \
+    device/asus/tf701t/asuspec/com.cyanogenmod.asuspec.xml:system/etc/permissions/com.cyanogenmod.asuspec.xml
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
@@ -182,7 +183,9 @@ PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory \
     libnetcmdiface \
-    WiFiDirectDemo
+    WiFiDirectDemo \
+    com.cyanogenmod.asuspec \
+    libasuspec_jni
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
