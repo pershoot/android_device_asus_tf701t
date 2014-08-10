@@ -185,7 +185,8 @@ PRODUCT_PACKAGES += \
     libnetcmdiface \
     WiFiDirectDemo \
     com.cyanogenmod.asuspec \
-    libasuspec_jni
+    libasuspec_jni \
+    AutoParts_tfp
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
