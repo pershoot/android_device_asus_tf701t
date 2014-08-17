@@ -53,7 +53,6 @@ TARGET_KERNEL_CONFIG := cyanogenmod_tf701t_defconfig
 # Video
 BOARD_EGL_CFG := device/asus/tf701t/egl.cfg
 USE_OPENGL_RENDERER := true
-BOARD_HAVE_PIXEL_FORMAT_INFO := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 BOARD_USE_SKIA_LCDTEXT := true
