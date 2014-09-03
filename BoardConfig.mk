@@ -24,6 +24,8 @@ BOARD_USES_GENERIC_AUDIO := false
 # Use the non-open-source parts, if they're present
 -include vendor/asus/tf701t/BoardConfigVendor.mk
 
+TARGET_SPECIFIC_HEADER_PATH := device/asus/tf701t/include
+
 TARGET_NO_BOOTLOADER := true
 
 # Architecture
