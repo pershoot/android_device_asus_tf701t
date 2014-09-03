@@ -36,7 +36,8 @@ PRODUCT_COPY_FILES += \
 # Media
 PRODUCT_COPY_FILES += \
     device/asus/tf701t/media/media_profiles.xml:system/etc/media_profiles.xml \
-    device/asus/tf701t/media/media_codecs.xml:system/etc/media_codecs.xml
+    device/asus/tf701t/media/media_codecs.xml:system/etc/media_codecs.xml \
+    device/asus/tf701t/media/enctune.conf:system/etc/enctune.conf
 
 # GPS
 PRODUCT_COPY_FILES += \
