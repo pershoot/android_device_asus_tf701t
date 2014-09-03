@@ -75,11 +75,15 @@ etc/firmware/Splendid/LUT/LUT_W09.txt
 etc/firmware/Splendid/LUT/LUT_W10.txt
 etc/firmware/tegra11x/nvhost_msenc02.fw
 etc/firmware/tegra11x/nvhost_tsec.fw
+etc/hdcpsrm/hdcp1x.srm
+etc/hdcpsrm/hdcp2x.srm
+etc/hdcpsrm/hdcp2xtest.srm
 etc/oem_profile
 lib/libardrv_dynamic.so
 lib/libaudioavp.so
 lib/libcgdrv.so
 lib/libcplconnectclient.so
+lib/libdrmdecrypt.so
 lib/libfcamdng.so
 lib/libgov_combinator.so
 lib/libgov_cores.so
@@ -155,6 +159,7 @@ lib/libnvtvmr.so
 lib/libnvupdater_jni.so
 lib/libnvwinsys.so
 lib/libnvwsi.so
+lib/liboemcrypto.so
 lib/libopencv24_tegra.so
 lib/libpowerservice_client.so
 lib/libpowerservice.so
@@ -213,3 +218,4 @@ vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
 vendor/lib/hw/power.macallan.so
 vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/mediadrm/libwvdrmengine.so
