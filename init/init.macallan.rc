@@ -462,47 +462,47 @@ service bugreport /system/bin/dumpstate -d -p -B -o /data/data/com.android.shell
 on property:init.svc.hciattach=stopped
     write /sys/devices/platform/reg-userspace-consumer.1/state disabled
 
-service fuse_MicroSD /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/MicroSD /storage/MicroSD
+service fuse_MicroSD /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/MicroSD /storage/MicroSD
     class late_start
     disabled
 
-service fuse_SD /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/SD /storage/SD
+service fuse_SD /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/SD /storage/SD
     class late_start
     disabled
 
-service fuse_USBdisk1a /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/USBdisk1a /storage/USBdisk1a
+service fuse_USBdisk1a /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1a /storage/USBdisk1a
     class late_start
     disabled
 
-service fuse_USBdisk1b /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/USBdisk1b /storage/USBdisk1b
+service fuse_USBdisk1b /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1b /storage/USBdisk1b
     class late_start
     disabled
 
-service fuse_USBdisk1c /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/USBdisk1c /storage/USBdisk1c
+service fuse_USBdisk1c /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1c /storage/USBdisk1c
     class late_start
     disabled
 
-service fuse_USBdisk1d /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/USBdisk1d /storage/USBdisk1d
+service fuse_USBdisk1d /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1d /storage/USBdisk1d
     class late_start
     disabled
 
-service fuse_USBdisk1e /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/USBdisk1e /storage/USBdisk1e
+service fuse_USBdisk1e /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1e /storage/USBdisk1e
     class late_start
     disabled
 
-service fuse_USBdisk1f /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/USBdisk1f /storage/USBdisk1f
+service fuse_USBdisk1f /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1f /storage/USBdisk1f
     class late_start
     disabled
 
-service fuse_USBdisk1g /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/USBdisk1g /storage/USBdisk1g
+service fuse_USBdisk1g /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1g /storage/USBdisk1g
     class late_start
     disabled
 
-service fuse_USBdisk1h /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/USBdisk1h /storage/USBdisk1h
+service fuse_USBdisk1h /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk1h /storage/USBdisk1h
     class late_start
     disabled
 
-service fuse_USBdisk2 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/USBdisk2 /storage/USBdisk2
+service fuse_USBdisk2 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/USBdisk2 /storage/USBdisk2
     class late_start
     disabled
 
