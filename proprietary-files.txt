@@ -34,6 +34,7 @@ bin/ussrd
 bin/usdwatchdog
 bin/widevine_install
 bin/wifimacwriter
+etc/camera/data/config.dat
 etc/camera/persist/camera_overrides_cal.isp
 etc/camera/persist/camera_overrides.isp
 etc/firmware/battery_gauge/mozart_dock_0167.dffs
