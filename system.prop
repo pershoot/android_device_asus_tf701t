@@ -2,7 +2,7 @@
 # system.prop for TF701T
 #
 ro.build.epad.project=TF501T
-ro.build.csc.version=US_TF501T_V11.4.1.27
+ro.build.csc.version=US_TF501T_V11.4.1.29
 ro.opengles.version = 131072
 ro.radio.noril=true
 persist.logtool.gps.loglv=0
