@@ -6,8 +6,8 @@ Copyright (c) 2011-2013 NVIDIA Corporation.  All Rights Reserved.
 #documentation without an express license agreement from NVIDIA Corporation
 #is strictly prohibited.
 
-import init.${ro.boot.modem}_macallan.rc
-import init.factory.rc
+#import init.${ro.boot.modem}_macallan.rc
+#import init.factory.rc
 import init.macallan.usb.rc
 
 on early-init
@@ -80,6 +80,7 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     mkdir /data/nvcam 0700 media camera
     chown dhcp dhcp /data/misc/dhcp
+    chown wifi root /dev/rfkill
 
     mkdir /data/misc/wminput 0776 system system
 
@@ -96,16 +97,16 @@ on post-fs-data
     # eMMC total size for AsusSetting
     symlink /sys/bus/mmc/devices/mmc0:0001/emmc_total_size /data/data/emmc_total_size
 
-on early-boot
-    insmod /system/lib/modules/compat/compat.ko
-    insmod /system/lib/modules/compat/cfg80211.ko
-    insmod /system/lib/modules/compat/mac80211.ko
-    insmod /system/lib/modules/compat/wlcore.ko suspen_rx_ba_activity=1
-    insmod /system/lib/modules/compat/wl18xx.ko dc2dc=0 \
-     low_band_component=0x2 low_band_component_type=0x5 \
-     high_band_component=0x1 high_band_component_type=0x9 \
-     n_antennas_5=0 n_antennas_2=1
-    insmod /system/lib/modules/compat/wlcore_sdio.ko
+#on early-boot
+#    insmod /system/lib/modules/compat/compat.ko
+#    insmod /system/lib/modules/compat/cfg80211.ko
+#    insmod /system/lib/modules/compat/mac80211.ko
+#    insmod /system/lib/modules/compat/wlcore.ko suspen_rx_ba_activity=1
+#    insmod /system/lib/modules/compat/wl18xx.ko dc2dc=0 \
+#     low_band_component=0x2 low_band_component_type=0x5 \
+#     high_band_component=0x1 high_band_component_type=0x9 \
+#     n_antennas_5=0 n_antennas_2=1
+#    insmod /system/lib/modules/compat/wlcore_sdio.ko
 
 
 on boot
@@ -516,12 +517,12 @@ import init.tf.rc
     group system
 
 # test mode for RIL: Should probably be removed from production phones
-service ril-daemon-test /system/bin/rild
-    socket rild-testmode stream 666 root radio
-    socket rild-debug stream 660 radio system
-    user root
-    group radio cache inet misc audio sdcard_rw sdcard_r
-    disabled
+#service ril-daemon-test /system/bin/rild
+#    socket rild-testmode stream 666 root radio
+#    socket rild-debug stream 660 radio system
+#    user root
+#    group radio cache inet misc audio sdcard_rw sdcard_r
+#    disabled
 
 # Start Icera switcher daemon
 #service icera-switcher /system/bin/icera-switcherd
