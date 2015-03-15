@@ -20,68 +20,68 @@
 # a new key layout file with the required keyboard configuration.
 #
 
-key 1     ESCAPE              WAKE
-key 2     1                   WAKE
-key 3     2                   WAKE
-key 4     3                   WAKE
-key 5     4                   WAKE
-key 6     5                   WAKE
-key 7     6                   WAKE
-key 8     7                   WAKE
-key 9     8                   WAKE
-key 10    9                   WAKE
-key 11    0                   WAKE
-key 12    MINUS               WAKE
-key 13    EQUALS              WAKE
-key 14    DEL                 WAKE
-key 15    TAB                 WAKE
-key 16    Q                   WAKE
-key 17    W                   WAKE
-key 18    E                   WAKE
-key 19    R                   WAKE
-key 20    T                   WAKE
-key 21    Y                   WAKE
-key 22    U                   WAKE
-key 23    I                   WAKE
-key 24    O                   WAKE
-key 25    P                   WAKE
-key 26    LEFT_BRACKET        WAKE
-key 27    RIGHT_BRACKET       WAKE
-key 28    ENTER               WAKE
-key 29    CTRL_LEFT           WAKE
-key 30    A                   WAKE
-key 31    S                   WAKE
-key 32    D                   WAKE
-key 33    F                   WAKE
-key 34    G                   WAKE
-key 35    H                   WAKE
-key 36    J                   WAKE
-key 37    K                   WAKE
-key 38    L                   WAKE
-key 39    SEMICOLON           WAKE
-key 40    APOSTROPHE          WAKE
-key 41    GRAVE               WAKE
-key 42    SHIFT_LEFT          WAKE
-key 43    BACKSLASH           WAKE
-key 44    Z                   WAKE
-key 45    X                   WAKE
-key 46    C                   WAKE
-key 47    V                   WAKE
-key 48    B                   WAKE
-key 49    N                   WAKE
-key 50    M                   WAKE
-key 51    COMMA               WAKE
-key 52    PERIOD              WAKE
-key 53    SLASH               WAKE
-key 54    SHIFT_RIGHT         WAKE
+key 1     ESCAPE
+key 2     1
+key 3     2
+key 4     3
+key 5     4
+key 6     5
+key 7     6
+key 8     7
+key 9     8
+key 10    9
+key 11    0
+key 12    MINUS
+key 13    EQUALS
+key 14    DEL
+key 15    TAB
+key 16    Q
+key 17    W
+key 18    E
+key 19    R
+key 20    T
+key 21    Y
+key 22    U
+key 23    I
+key 24    O
+key 25    P
+key 26    LEFT_BRACKET
+key 27    RIGHT_BRACKET
+key 28    ENTER
+key 29    CTRL_LEFT
+key 30    A
+key 31    S
+key 32    D
+key 33    F
+key 34    G
+key 35    H
+key 36    J
+key 37    K
+key 38    L
+key 39    SEMICOLON
+key 40    APOSTROPHE
+key 41    GRAVE
+key 42    SHIFT_LEFT
+key 43    BACKSLASH
+key 44    Z
+key 45    X
+key 46    C
+key 47    V
+key 48    B
+key 49    N
+key 50    M
+key 51    COMMA
+key 52    PERIOD
+key 53    SLASH
+key 54    SHIFT_RIGHT
 key 55    NUMPAD_MULTIPLY
-key 56    ALT_LEFT            WAKE
-key 57    SPACE               WAKE
-key 58    CAPS_LOCK           WAKE
+key 56    ALT_LEFT
+key 57    SPACE
+key 58    CAPS_LOCK
 key 59    F1
-# key 60    TOUCHPAD            WAKE
-# key 61    BRIGHTNESS_AUTO     WAKE
-key 62    SETTINGS            WAKE
+# key 60    TOUCHPAD
+# key 61    BRIGHTNESS_AUTO
+key 62    SETTINGS
 key 63    F5
 key 64    F6
 key 65    F7
@@ -104,49 +104,49 @@ key 81    NUMPAD_3
 key 82    NUMPAD_0
 key 83    NUMPAD_DOT
 # key 84 (undefined)
-key 85    ZENKAKU_HANKAKU      WAKE
-key 86    BACKSLASH            WAKE
+key 85    ZENKAKU_HANKAKU
+key 86    BACKSLASH
 key 87    F11
 key 88    F12
 key 89    RO
 # key 90 "KEY_KATAKANA"
 # key 91 "KEY_HIRAGANA"
-key 92    HENKAN               WAKE
-key 93    KATAKANA_HIRAGANA    WAKE
-key 94    MUHENKAN             WAKE
+key 92    HENKAN
+key 93    KATAKANA_HIRAGANA
+key 94    MUHENKAN
 key 95    NUMPAD_COMMA
-key 96    ENTER                WAKE
-key 97    CTRL_RIGHT           WAKE
+key 96    ENTER
+key 97    CTRL_RIGHT
 key 98    NUMPAD_DIVIDE
 key 99    SYSRQ
-key 100   ALT_RIGHT            WAKE
+key 100   ALT_RIGHT
 # key 101 "KEY_LINEFEED"
 key 102   MOVE_HOME
-key 103   DPAD_UP              WAKE
+key 103   DPAD_UP
 key 104   PAGE_UP
-key 105   DPAD_LEFT            WAKE
-key 106   DPAD_RIGHT           WAKE
+key 105   DPAD_LEFT
+key 106   DPAD_RIGHT
 key 107   MOVE_END
-key 108   DPAD_DOWN            WAKE
+key 108   DPAD_DOWN
 key 109   PAGE_DOWN
 key 110   INSERT
-key 111   FORWARD_DEL          WAKE
+key 111   FORWARD_DEL
 # key 112 "KEY_MACRO"
-key 113   VOLUME_MUTE          WAKE
-key 114   VOLUME_DOWN          WAKE
-key 115   VOLUME_UP            WAKE
-key 116   POWER             WAKE
+key 113   VOLUME_MUTE
+key 114   VOLUME_DOWN
+key 115   VOLUME_UP
+key 116   POWER
 key 117   NUMPAD_EQUALS
 # key 118 "KEY_KPPLUSMINUS"
 key 119   BREAK
 # key 120 (undefined)
-key 121   NUMPAD_COMMA         WAKE
-key 122   KANA                 WAKE
-key 123   EISU                 WAKE
-key 124   YEN                  WAKE
+key 121   NUMPAD_COMMA
+key 122   KANA
+key 123   EISU
+key 124   YEN
 key 125   META_LEFT
 key 126   META_RIGHT
-key 127   MENU                 WAKE
+key 127   MENU
 key 128   MEDIA_STOP
 # key 129 "KEY_AGAIN"
 # key 130 "KEY_PROPS"
@@ -158,40 +158,40 @@ key 128   MEDIA_STOP
 # key 136 "KEY_FIND"
 # key 137 "KEY_CUT"
 # key 138 "KEY_HELP"
-key 139   MENU                WAKE
+key 139   MENU
 key 140   CALCULATOR
 # key 141 "KEY_SETUP"
-key 142   POWER             WAKE
-key 143   POWER             WAKE
+key 142   POWER
+key 143   POWER
 # key 144 "KEY_FILE"
 # key 145 "KEY_SENDFILE"
 # key 146 "KEY_DELETEFILE"
 # key 147 "KEY_XFER"
 # key 148 "KEY_PROG1"
 # key 149 "KEY_PROG2"
-key 150   EXPLORER          WAKE
+key 150   EXPLORER
 # key 151 "KEY_MSDOS"
-key 152   POWER             WAKE
+key 152   POWER
 # key 153 "KEY_DIRECTION"
 # key 154 "KEY_CYCLEWINDOWS"
-key 155   ENVELOPE          WAKE
+key 155   ENVELOPE
 key 156   BOOKMARK
 # key 157 "KEY_COMPUTER"
-key 158   BACK              WAKE
-key 159   FORWARD           WAKE
+key 158   BACK
+key 159   FORWARD
 key 160   MEDIA_CLOSE
 key 161   MEDIA_EJECT
 key 162   MEDIA_EJECT
-key 163   MEDIA_NEXT        WAKE
-key 164   MEDIA_PLAY_PAUSE  WAKE
-key 165   MEDIA_PREVIOUS    WAKE
+key 163   MEDIA_NEXT
+key 164   MEDIA_PLAY_PAUSE
+key 165   MEDIA_PREVIOUS
 key 166   MEDIA_STOP
 key 167   MEDIA_RECORD
 key 168   MEDIA_REWIND
 key 169   CALL
 # key 170 "KEY_ISO"
 key 171   MUSIC
-key 172   HOME              WAKE
+key 172   HOME
 # key 173 "KEY_REFRESH"
 # key 174 "KEY_EXIT"
 # key 175 "KEY_MOVE"
@@ -231,25 +231,25 @@ key 208   MEDIA_FAST_FORWARD
 # key 209 "KEY_BASSBOOST"
 # key 210 "KEY_PRINT"
 # key 211 "KEY_HP"
-# key 212   CAPTURE          WAKE
+# key 212   CAPTURE
 key 213   MUSIC
 # key 214 "KEY_QUESTION"
 key 215   ENVELOPE
 # key 216 "KEY_CHAT"
-key 217   SEARCH           WAKE
+key 217   SEARCH
 # key 218 "KEY_CONNECT"
 # key 219 "KEY_FINANCE"
 # key 220 "KEY_SPORT"
 # key 221 "KEY_SHOP"
 # key 222 "KEY_ALTERASE"
 # key 223 "KEY_CANCEL"
-key 224   BRIGHTNESS_DOWN  WAKE
-key 225   BRIGHTNESS_UP    WAKE
+key 224   BRIGHTNESS_DOWN
+key 225   BRIGHTNESS_UP
 key 226   HEADSETHOOK
 
-# key 237     BLUETOOTH      WAKE
-# key 238     WIRELESS       WAKE
-# key 246     READMODE       WAKE
+# key 237     BLUETOOTH
+# key 238     WIRELESS
+# key 246     READMODE
 
 key 256   BUTTON_1
 key 257   BUTTON_2

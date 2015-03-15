@@ -1,0 +1,10 @@
+type ussr_setup, domain;
+type ussr_setup_exec, exec_type, file_type;
+
+init_daemon_domain(ussr_setup)
+
+allow ussr_setup system_file:file execute_no_trans;
+allow ussr_setup shell_exec:file read;
+allow ussr_setup sysfs:file setattr;
+allow ussr_setup self:capability { chown fowner fsetid };
+allow ussr_setup sysfs_devices_system_cpu:file setattr;

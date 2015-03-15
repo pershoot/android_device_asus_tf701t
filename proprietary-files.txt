@@ -85,7 +85,6 @@ lib/libardrv_dynamic.so
 lib/libaudioavp.so
 lib/libcgdrv.so
 lib/libcplconnectclient.so
-lib/libdrmdecrypt.so
 lib/libfcamdng.so
 lib/libgov_combinator.so
 lib/libgov_cores.so
@@ -161,7 +160,6 @@ lib/libnvtvmr.so
 lib/libnvupdater_jni.so
 lib/libnvwinsys.so
 lib/libnvwsi.so
-lib/liboemcrypto.so
 lib/libopencv24_tegra.so
 lib/libpowerservice_client.so
 lib/libpowerservice.so
@@ -178,7 +176,6 @@ lib/libtinyalsa.so
 lib/libtsec_wrapper.so
 lib/libtsechdcp.so
 lib/libussrd.so
-lib/libWVphoneAPI.so
 lib/libwfd_source.so
 lib/libwfd_common.so
 lib/libwfd_sink.so
@@ -219,6 +216,8 @@ usr/share/alsa/pcm/surround41.conf
 usr/share/alsa/pcm/surround50.conf
 usr/share/alsa/pcm/surround51.conf
 usr/share/alsa/pcm/surround71.conf
+vendor/lib/libdrmdecrypt.so
+vendor/lib/liboemcrypto.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so

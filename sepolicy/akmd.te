@@ -1,0 +1,7 @@
+type akmd, domain;
+type akmd_exec, exec_type, file_type;
+permissive_or_unconfined(akmd)
+
+init_daemon_domain(akmd)
+
+allow akmd device:chr_file { read write };

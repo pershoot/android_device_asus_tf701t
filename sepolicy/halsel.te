@@ -1,0 +1,7 @@
+type halsel, domain;
+type halsel_exec, exec_type, file_type;
+
+init_daemon_domain(halsel)
+
+allow halsel sensors_data_file:dir { write remove_name add_name search };
+allow halsel sensors_data_file:lnk_file { create unlink getattr };

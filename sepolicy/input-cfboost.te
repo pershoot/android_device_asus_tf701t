@@ -1,0 +1,7 @@
+type input-cfboost, domain;
+type input-cfboost_exec, exec_type, file_type;
+
+init_daemon_domain(input-cfboost)
+
+allow input-cfboost shell_exec:file read;
+allow input-cfboost sysfs:file write;

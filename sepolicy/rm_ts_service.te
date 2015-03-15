@@ -1,0 +1,7 @@
+type rm_ts_service, domain;
+type rm_ts_service_exec, exec_type, file_type;
+
+init_daemon_domain(rm_ts_service)
+
+allow rm_ts_service system_server_service:service_manager add;
+allow rm_ts_service device:chr_file ioctl;

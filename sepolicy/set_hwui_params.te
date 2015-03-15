@@ -1,0 +1,12 @@
+type set_hwui_params, domain;
+type set_hwui_params_exec, exec_type, file_type;
+
+init_daemon_domain(set_hwui_params)
+
+allow set_hwui_params default_prop:property_service set;
+allow set_hwui_params system_file:file execute_no_trans;
+allow set_hwui_params shell_exec:file read;
+allow set_hwui_params sysfs_devices_tegradc:dir search;
+allow set_hwui_params sysfs_devices_tegradc:file { getattr open read };
+allow set_hwui_params init:unix_stream_socket connectto;
+allow set_hwui_params property_socket:sock_file write;

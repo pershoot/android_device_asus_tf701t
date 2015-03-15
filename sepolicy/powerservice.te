@@ -1,0 +1,6 @@
+type powerservice, domain;
+type powerservice_exec, exec_type, file_type;
+
+init_daemon_domain(powerservice)
+
+allow powerservice system_server_service:service_manager add;

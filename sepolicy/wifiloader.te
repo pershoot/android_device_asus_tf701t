@@ -1,0 +1,13 @@
+type wifiloader, domain;
+type wifiloader_exec, exec_type, file_type;
+
+init_daemon_domain(wifiloader)
+
+allow wifiloader system_file:file execute_no_trans;
+allow wifiloader self:capability { fowner chown dac_override };
+allow wifiloader shell_exec:file read;
+allow wifiloader sysfs:file write;
+allow wifiloader unlabeled:dir search;
+allow wifiloader unlabeled:file { read getattr open };
+allow wifiloader wifi_data_file:file { write getattr open setattr append create };
+allow wifiloader wifi_data_file:dir { search write add_name };

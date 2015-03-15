@@ -32,7 +32,6 @@ TARGET_NO_BOOTLOADER := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a15
-TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 
@@ -44,7 +43,7 @@ TARGET_BOOTLOADER_BOARD_NAME := macallan
 
 # Kernel
 BOARD_KERNEL_BASE := 0x10000000
-BOARD_KERNEL_CMDLINE :=
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 
@@ -57,16 +56,10 @@ BOARD_EGL_CFG := device/asus/tf701t/egl.cfg
 USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
-BOARD_USE_SKIA_LCDTEXT := true
-
 # Recovery
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_HAS_LARGE_FILESYSTEM := true
-TARGET_RECOVERY_INITRC := device/asus/tf701t/recovery/init.rc
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/backlight/pwm-backlight/brightness\"
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
+RECOVERY_FONT := \"roboto_23x41.h\"
+COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD -DADD_LEGACY_MEMORY_DEALER_CONSTRUCTOR_SYMBOL
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/asus/tf701t
 
@@ -101,27 +94,44 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/asus/tf701t/bluetooth
 
 # SELINUX Defines
-BOARD_SEPOLICY_DIRS := \
+BOARD_SEPOLICY_DIRS += \
     device/asus/tf701t/sepolicy
 
-BOARD_SEPOLICY_UNION := \
+BOARD_SEPOLICY_UNION += \
     file_contexts \
     genfs_contexts \
-    app.te \
-    bdaddwriter.te \
+    service_contexts \
     device.te \
     drmserver.te \
-    init_shell.te \
     file.te \
+    keystore.te \
+    mediaserver.te \
+    recovery.te \
     sensors_config.te \
-    system.te \
-    zygote.te \
-    healthd.te \
-    domain.te \
-    ueventd.te
+    setup_fs.te \
+    surfaceflinger.te \
+    system_app.te \
+    system_server.te \
+    ueventd.te \
+    vold.te \
+    radio.te \
+    halsel.te \
+    wifiloader.te \
+    akmd.te \
+    set_hwui_params.te \
+    input-cfboost.te \
+    powerservice.te \
+    rm_ts_service.te \
+    ussr_setup.te \
+    usdwatchdog.te \
+    widevine_install.te \
+    kernel.te \
+    gpsd.te \
+    servicemanager.te \
+    sysinit.te
 
 BOARD_HARDWARE_CLASS := device/asus/tf701t/cmhw/
 
-TARGET_BOOTANIMATION_PRELOAD := true
-
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.macallan
+
+EXTENDED_FONT_FOOTPRINT := true

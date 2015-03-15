@@ -31,13 +31,18 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/init/init.macallan.rc:root/init.macallan.rc \
     device/asus/tf701t/init/init.hdcp.rc:root/init.hdcp.rc \
     device/asus/tf701t/init/init.macallan.usb.rc:root/init.macallan.usb.rc \
-    device/asus/tf701t/init/init.tf.rc:root/init.tf.rc
+    device/asus/tf701t/init/init.tf.rc:root/init.tf.rc \
+    device/asus/tf701t/init/init.recovery.macallan.rc:root/init.recovery.macallan.rc
 
 # Media
 PRODUCT_COPY_FILES += \
     device/asus/tf701t/media/media_profiles.xml:system/etc/media_profiles.xml \
     device/asus/tf701t/media/media_codecs.xml:system/etc/media_codecs.xml \
-    device/asus/tf701t/media/enctune.conf:system/etc/enctune.conf
+    device/asus/tf701t/media/enctune.conf:system/etc/enctune.conf \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -70,7 +75,6 @@ PRODUCT_COPY_FILES += \
     device/asus/tf701t/wifi/firmware/bcm43341/fw_bcmdhd.bin:system/vendor/firmware/bcm43341/fw_bcmdhd.bin \
     device/asus/tf701t/wifi/firmware/bcm43341/fw_bcmdhd_p2p.bin:system/vendor/firmware/bcm43341/fw_bcmdhd_p2p.bin \
     device/asus/tf701t/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    device/asus/tf701t/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/asus/tf701t/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Power
@@ -142,7 +146,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
 
 # ASUS
 PRODUCT_COPY_FILES += \
@@ -171,7 +176,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.hwui.render_dirty_regions=false \
     persist.tegra.nvmmlite = 1 \
     drm.service.enabled=true \
-    tf.enable=y
+    tf.enable=y \
+    persist.sys.isUsbOtgEnabled=true
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -189,6 +195,13 @@ PRODUCT_PACKAGES += \
     com.cyanogenmod.asuspec \
     libasuspec_jni \
     AutoParts_tfp
+
+# Wifi
+PRODUCT_PACKAGES += \
+    hostapd \
+    dhcpcd.conf \
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \

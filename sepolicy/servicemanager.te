@@ -1,0 +1,3 @@
+allow servicemanager powerservice:dir search;
+allow servicemanager powerservice:file { read open };
+allow servicemanager powerservice:process getattr;

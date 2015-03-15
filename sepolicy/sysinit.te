@@ -1,0 +1,1 @@
+allow sysinit userinit_exec:file { read execute open execute_no_trans getattr };

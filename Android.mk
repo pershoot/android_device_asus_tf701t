@@ -54,6 +54,10 @@ $(shell mkdir -p $(TARGET_OUT_KEYLAYOUT); \
         cp -pf device/asus/tf701t/keylayout/Vendor_12bd_Product_d015.kl $(TARGET_OUT_KEYLAYOUT); \
         cp -pf device/asus/tf701t/keylayout/Vendor_2378_Product_100a.kl $(TARGET_OUT_KEYLAYOUT))
 
+# copy set_backlight in to recovery
+$(shell mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/sbin; \
+        cp -pf device/asus/tf701t/recovery/set_backlight.sh $(TARGET_RECOVERY_ROOT_OUT)/sbin)
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
 endif

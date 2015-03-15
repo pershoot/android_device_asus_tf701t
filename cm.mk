@@ -1,5 +1,8 @@
-TARGET_SCREEN_HEIGHT := 1600
+TARGET_SCREEN_HEIGHT := 1200
 TARGET_SCREEN_WIDTH := 2560
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # Inherit device configuration for tf701t.
 $(call inherit-product, device/asus/tf701t/tf701t.mk)
