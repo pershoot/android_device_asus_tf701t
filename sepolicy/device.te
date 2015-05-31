@@ -1,7 +1,5 @@
 type knv_device, dev_type;
 type baseband_log_device, dev_type;
-type userdata_block_device, dev_type;
-type cache_block_device, dev_type;
 type system_block_device, dev_type;
 type recovery_block_device, dev_type;
 type metadata_block_device, dev_type;
