@@ -6,5 +6,6 @@ init_daemon_domain(ussr_setup)
 allow ussr_setup system_file:file execute_no_trans;
 allow ussr_setup shell_exec:file read;
 allow ussr_setup sysfs:file setattr;
-allow ussr_setup self:capability { chown fowner fsetid };
+allow ussr_setup self:capability { chown fowner fsetid dac_override };
 allow ussr_setup sysfs_devices_system_cpu:file setattr;
+allow ussr_setup debugfs:file { read getattr setattr };
