@@ -58,3 +58,10 @@
 
 # Hardware tunables
 /sys/class/graphics/fb0/device/smartdimmer/enable        u:object_r:sysfs_writable:s0
+
+# raydium touch
+/sys/devices/virtual/misc/raydium_ts/self_test                  u:object_r:sysfs_touch_calib:s0
+/sys/devices/virtual/misc/raydium_ts/slowscan_enable            u:object_r:sysfs_slowscan:s0
+
+/dev/raydium_ts                                                 u:object_r:touch_device:s0
+/persist/touch(/.*)?						u:object_r:sensors_data_file:s0

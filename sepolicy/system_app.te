@@ -1,1 +1,6 @@
 allow system_app knv_device:chr_file rw_file_perms;
+
+# Allow sysfs file access to system_app(CalibNotifier)
+allow system_app sysfs_touch_calib:file rw_file_perms;
+allow system_app sensors_data_file:dir create_dir_perms;
+allow system_app sensors_data_file:file create_file_perms;

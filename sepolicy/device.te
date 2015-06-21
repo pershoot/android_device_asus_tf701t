@@ -7,3 +7,6 @@ type system_block_device, dev_type;
 type recovery_block_device, dev_type;
 type metadata_block_device, dev_type;
 type sensors_block_device, dev_type;
+
+# /dev/raydium_ts
+type touch_device, dev_type;

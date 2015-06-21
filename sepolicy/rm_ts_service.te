@@ -5,3 +5,17 @@ init_daemon_domain(rm_ts_service)
 
 allow rm_ts_service system_server_service:service_manager add;
 allow rm_ts_service device:chr_file ioctl;
+
+r_dir_file(rm_ts_service, sensors_data_file);
+
+allow rm_ts_service graphics_device:chr_file r_file_perms;
+allow rm_ts_service graphics_device:dir search;
+allow rm_ts_service kmsg_device:chr_file { write getattr open };
+
+allow rm_ts_service touch_device:chr_file rw_file_perms;
+allow rm_ts_service self:capability { net_admin sys_nice };
+allow rm_ts_service self:netlink_socket create_socket_perms;
+allow rm_ts_service self:netlink_kobject_uevent_socket create_socket_perms;
+
+binder_use(rm_ts_service);
+binder_service(rm_ts_service);
