@@ -1,4 +1,4 @@
-allow mediaserver { gpu_device nvhost_device }:chr_file rw_file_perms;
+allow mediaserver { gpu_device video_device }:chr_file rw_file_perms;
 allow mediaserver system_prop:property_service set;
 
 # Mediaserver are expected to be able to rw all sysfs files
