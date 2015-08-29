@@ -24,8 +24,6 @@ BOARD_USES_GENERIC_AUDIO := false
 # Use the non-open-source parts, if they're present
 -include vendor/asus/tf701t/BoardConfigVendor.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/asus/tf701t/include
-
 TARGET_NO_BOOTLOADER := true
 
 # Architecture
@@ -52,7 +50,6 @@ TARGET_KERNEL_SOURCE := kernel/asus/tf701t
 TARGET_KERNEL_CONFIG := cyanogenmod_tf701t_defconfig
 
 # Video
-BOARD_EGL_CFG := device/asus/tf701t/egl.cfg
 USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 1
