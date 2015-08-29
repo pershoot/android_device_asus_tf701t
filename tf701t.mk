@@ -16,7 +16,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
-$(call inherit-product-if-exists, vendor/asus/tf701t/tf701t-vendor.mk)
+$(call inherit-product, vendor/asus/tf701t/tf701t-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += \
     device/asus/tf701t/overlay
