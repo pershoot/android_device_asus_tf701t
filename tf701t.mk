@@ -176,7 +176,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.tegra.nvmmlite = 1 \
     drm.service.enabled=true \
     tf.enable=y \
-    persist.sys.isUsbOtgEnabled=true
+    persist.sys.isUsbOtgEnabled=true \
+    sys.io.scheduler=bfq
 
 # Audio
 PRODUCT_PACKAGES += \
