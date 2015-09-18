@@ -342,9 +342,10 @@ on boot
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
     # set perms on mmcblk1 for scheduler
-    chown system system /sys/block/mmcblk1/queue/scheduler
-    chmod 0664 /sys/block/mmcblk1/queue/scheduler
-    restorecon /sys/block/mmcblk1/queue/scheduler
+    on property:init.svc.fuse_MicroSD=running
+        chown system system /sys/block/mmcblk1/queue/scheduler
+        chmod 0664 /sys/block/mmcblk1/queue/scheduler
+        restorecon /sys/block/mmcblk1/queue/scheduler
 
 # nvdps
     chown system system /sys/class/graphics/fb0/device/nvdps
@@ -367,17 +368,16 @@ on boot
 
 # Default Read Ahead value for sdcards
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
-    write /sys/block/mmcblk1/queue/read_ahead_kb 2048
+
+    on property:init.svc.fuse_MicroSD=running
+        write /sys/block/mmcblk1/queue/read_ahead_kb 2048
 
 # set scheduler
-on property:sys.io.scheduler=*
+on property:init.svc.fuse_MicroSD=running
     write /sys/block/mmcblk1/queue/scheduler ${sys.io.scheduler}
 
 # set scheduler params
-on property:sys.io.scheduler=cfq
-    write /sys/block/mmcblk1/queue/iosched/slice_idle 0
-
-on property:sys.io.scheduler=bfq
+on property:init.svc.fuse_MicroSD=running
     write /sys/block/mmcblk1/queue/iosched/slice_idle 0
 
 # Wiimote connect status
