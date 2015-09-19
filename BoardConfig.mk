@@ -129,7 +129,7 @@ BOARD_SEPOLICY_UNION += \
     servicemanager.te \
     sysinit.te
 
-BOARD_HARDWARE_CLASS := device/asus/tf701t/cmhw/
+BOARD_HARDWARE_CLASS := device/asus/tf701t/cmhw
 
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.macallan
 
