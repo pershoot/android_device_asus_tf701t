@@ -341,12 +341,6 @@ on boot
     # TODO: Remove once powerhal takes over app profiles
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
-    # set perms on mmcblk1 for scheduler
-    on property:init.svc.fuse_MicroSD=running
-        chown system system /sys/block/mmcblk1/queue/scheduler
-        chmod 0664 /sys/block/mmcblk1/queue/scheduler
-        restorecon /sys/block/mmcblk1/queue/scheduler
-
 # nvdps
     chown system system /sys/class/graphics/fb0/device/nvdps
 
@@ -371,6 +365,12 @@ on boot
 
     on property:init.svc.fuse_MicroSD=running
         write /sys/block/mmcblk1/queue/read_ahead_kb 2048
+
+# set perms on mmcblk1 for scheduler
+    on property:init.svc.fuse_MicroSD=running
+        chown system system /sys/block/mmcblk1/queue/scheduler
+        chmod 0664 /sys/block/mmcblk1/queue/scheduler
+        restorecon /sys/block/mmcblk1/queue/scheduler
 
 # set scheduler
 on property:init.svc.fuse_MicroSD=running
