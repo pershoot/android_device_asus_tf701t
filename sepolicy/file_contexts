@@ -32,7 +32,6 @@
 /data/tf(/.*)?                    u:object_r:tee_data_file:s0
 
 /system/bin/gpsd                    -- u:object_r:gpsd_exec:s0
-/system/bin/setup_fs                -- u:object_r:setup_fs_exec:s0
 /system/bin/halsel                  -- u:object_r:halsel_exec:s0
 /system/bin/loadDriver.sh           -- u:object_r:wifiloader_exec:s0
 /system/bin/akmd09911               -- u:object_r:akmd_exec:s0

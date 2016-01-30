@@ -564,17 +564,6 @@ on property:ro.factorytest=2
     chown system system /persist
     chmod 0755 /persist
 
-# create filesystems if necessary
-service setup_fs /system/bin/setup_fs \
-        /dev/block/platform/sdhci-tegra.3/by-name/PER \
-        /dev/block/platform/sdhci-tegra.3/by-name/UDA \
-        /dev/block/platform/sdhci-tegra.3/by-name/CAC \
-        /dev/block/platform/sdhci-tegra.3/by-name/ADF
-    class core
-    user root
-    group root
-    oneshot
-
 # unified scaling setup
 service ussr_setup /system/bin/ussr_setup.sh
     class main
