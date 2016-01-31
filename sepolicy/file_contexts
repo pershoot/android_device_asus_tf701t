@@ -68,3 +68,8 @@
 # camera devices
 /dev/focuser                            u:object_r:camera_device:s0
 /dev/mipi-cal                           u:object_r:camera_device:s0
+
+/dev/cpu_freq_min                       u:object_r:pmqos_device:s0
+/dev/cpu_freq_max                       u:object_r:pmqos_device:s0
+/dev/min_online_cpus                    u:object_r:pmqos_device:s0
+/dev/max_online_cpus                    u:object_r:pmqos_device:s0

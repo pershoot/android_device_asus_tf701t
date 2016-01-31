@@ -17,3 +17,6 @@ allow system_server sysfs_writable:file rw_file_perms;
 # mpu sensor
 allow system_server sensors_data_file:dir rw_dir_perms;
 allow system_server sensors_data_file:file create_file_perms;
+
+# pmqos control
+allow system_server pmqos_device:chr_file rw_file_perms;
