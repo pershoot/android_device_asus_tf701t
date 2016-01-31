@@ -56,7 +56,7 @@
 /dev/block/platform/sdhci-tegra\.3/by-name/PER u:object_r:sensors_block_device:s0
 
 # Hardware tunables
-/sys/class/graphics/fb0/device/smartdimmer/enable        u:object_r:sysfs_writable:s0
+/sys/devices/platform/host1x/tegradc\.[0-1]/smartdimmer(/.*)    u:object_r:sysfs_smartdimmer:s0
 
 # raydium touch
 /sys/devices/virtual/misc/raydium_ts/self_test                  u:object_r:sysfs_touch_calib:s0

@@ -6,3 +6,6 @@ type sysfs_touch_calib, fs_type, sysfs_type;
 
 # /sys/devices/virtual/misc/raydium_ts/slowscan_enable
 type sysfs_slowscan, fs_type, sysfs_type;
+
+# /sys/devices/platform/host1x/tegradc.0/smartdimmer/...
+type sysfs_smartdimmer, fs_type, sysfs_type;

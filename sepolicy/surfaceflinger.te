@@ -7,3 +7,6 @@ allow surfaceflinger sysfs_devices_system_cpu:dir w_dir_perms;
 allow surfaceflinger default_prop:property_service set;
 
 allow surfaceflinger sysfs_slowscan:file { open write };
+
+# Allow surfaceflinger to configure smartdimmer and other PMQoS nodes
+allow surfaceflinger sysfs_smartdimmer:file rw_file_perms;
