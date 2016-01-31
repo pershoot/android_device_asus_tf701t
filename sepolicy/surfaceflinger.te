@@ -10,3 +10,7 @@ allow surfaceflinger sysfs_slowscan:file { open write };
 
 # Allow surfaceflinger to configure smartdimmer and other PMQoS nodes
 allow surfaceflinger sysfs_smartdimmer:file rw_file_perms;
+
+# should be more specific to only target /data/data/com.nvidia.cap
+allow surfaceflinger system_data_file:sock_file create_file_perms;
+allow surfaceflinger system_data_file:dir rw_dir_perms;
