@@ -9,3 +9,5 @@ type sensors_block_device, dev_type;
 type touch_device, dev_type;
 
 type pmqos_device, dev_type;
+
+type rfkill_device, dev_type;

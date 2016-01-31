@@ -126,7 +126,8 @@ BOARD_SEPOLICY_UNION += \
     kernel.te \
     gpsd.te \
     servicemanager.te \
-    sysinit.te
+    sysinit.te \
+    wpa_supplicant.te
 
 BOARD_HARDWARE_CLASS := device/asus/tf701t/cmhw
 
