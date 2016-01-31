@@ -7,3 +7,8 @@ allow mediaserver sysfs_touch_calib:file rw_file_perms;
 # Camera data files
 allow mediaserver camera_data_file:dir create_dir_perms;
 allow mediaserver camera_data_file:file create_file_perms;
+
+# Allow mediaserver read and write access to system_server
+# It needs to access the sensors as video stabilization uses
+# the sensor data
+allow mediaserver system_server:unix_stream_socket { read write };
