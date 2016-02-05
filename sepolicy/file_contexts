@@ -25,6 +25,7 @@
 /dev/ttyHS2                       u:object_r:hci_attach_dev:s0
 /dev/ttyACM0                      u:object_r:radio_device:s0
 /dev/ttyACM1                      u:object_r:baseband_log_device:s0
+/dev/asuspec                      u:object_r:input_device:s0
 
 /persist/lightsensor(/.*)?        u:object_r:sensors_data_file:s0
 /persist/sensors(/.*)?            u:object_r:sensors_data_file:s0
