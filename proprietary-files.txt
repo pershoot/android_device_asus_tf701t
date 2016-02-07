@@ -175,9 +175,6 @@ lib/libtinyalsa.so
 lib/libtsec_wrapper.so
 lib/libtsechdcp.so
 lib/libussrd.so
-lib/libwfd_source.so
-lib/libwfd_common.so
-lib/libwfd_sink.so
 lib/egl/libEGL_tegra_impl.so
 lib/egl/libEGL_tegra.so
 lib/egl/libGLESv1_CM_tegra_impl.so
