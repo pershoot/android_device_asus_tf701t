@@ -683,13 +683,3 @@ service mount_apd /system/bin/mount_apd.sh
     group root
     disabled
     oneshot
-
-# widevine install init
-on property:sys.boot_completed=1
-    start widevine_install
-
-service widevine_install /system/bin/widevine_install
-    user root
-    group root
-    disabled
-    oneshot

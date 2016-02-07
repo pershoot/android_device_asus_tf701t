@@ -32,7 +32,6 @@ bin/tf_daemon
 bin/ussr_setup.sh
 bin/ussrd
 bin/usdwatchdog
-bin/widevine_install
 bin/wifimacwriter
 etc/camera/data/config.dat
 etc/camera/persist/camera_overrides_cal.isp

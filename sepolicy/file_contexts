@@ -42,7 +42,6 @@
 /system/bin/rm_ts_server            -- u:object_r:rm_ts_service_exec:s0
 /system/bin/ussr_setup.sh           -- u:object_r:ussr_setup_exec:s0
 /system/bin/usdwatchdog             -- u:object_r:usdwatchdog_exec:s0
-/system/bin/widevine_install        -- u:object_r:widevine_install_exec:s0
 
 /sys/devices/platform/host1x/tegradc\.0(/.*)?                u:object_r:sysfs_devices_tegradc:s0
 /sys/devices/platform/host1x/tegradc\.1(/.*)?                u:object_r:sysfs_devices_tegradc:s0

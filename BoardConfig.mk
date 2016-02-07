@@ -120,7 +120,6 @@ BOARD_SEPOLICY_UNION += \
     rm_ts_service.te \
     ussr_setup.te \
     usdwatchdog.te \
-    widevine_install.te \
     kernel.te \
     gpsd.te \
     servicemanager.te \
