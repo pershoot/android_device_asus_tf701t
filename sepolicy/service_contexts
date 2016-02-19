@@ -1,3 +1,3 @@
-PowerService                u:object_r:system_server_service:s0
-raydium.ts_service          u:object_r:system_server_service:s0
+PowerService                u:object_r:power_service:s0
+raydium.ts_service          u:object_r:raydium_service:s0
 media.nvidia.audio_alsa     u:object_r:mediaserver_service:s0

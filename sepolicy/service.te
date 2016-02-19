@@ -1,0 +1,2 @@
+type raydium_service, service_manager_type;
+type power_service, service_manager_type;
