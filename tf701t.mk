@@ -195,6 +195,10 @@ PRODUCT_PACKAGES += \
        make_ext4fs \
        setup_fs
 
+# Touch in Recovery
+PRODUCT_PACKAGES += \
+	rm-wrapper
+
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_TAGS += dalvik.gc.type-precise

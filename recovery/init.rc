@@ -16,8 +16,13 @@ on init
     export ANDROID_ROOT /system
     export ANDROID_DATA /data
     export EXTERNAL_STORAGE /sdcard
+    export LD_LIBRARY_PATH /lib:/system/lib
+    export TOUCH_CONF_DIR /firmware
+    export TOUCH_DATA_DIR /firmware
 
     symlink /system/etc /etc
+    symlink /lib /system/lib
+    symlink /sbin/linker /system/bin/linker
 
     mkdir /boot
     mkdir /recovery
@@ -79,9 +84,6 @@ on boot
 
     class_start default
 
-    # Repeatable keys
-    setprop ro.cwm.enable_key_repeat true
-
 on property:sys.powerctl=*
     powerctl ${sys.powerctl}
 
@@ -94,6 +96,9 @@ service healthd /sbin/healthd -n
     seclabel u:r:healthd:s0
 
 service recovery /sbin/recovery
+    seclabel u:r:recovery:s0
+
+service rm_ts_service /sbin/rm-wrapper
     seclabel u:r:recovery:s0
 
 service setup_adbd /sbin/setup_adbd
