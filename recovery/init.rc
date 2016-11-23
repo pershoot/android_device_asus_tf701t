@@ -30,6 +30,7 @@ on init
     mkdir /system
     mkdir /data
     mkdir /cache
+    mkdir /persist
     mount tmpfs tmpfs /tmp
 
     chown root shell /tmp
